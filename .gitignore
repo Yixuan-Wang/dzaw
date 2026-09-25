@@ -1,0 +1,19 @@
+# Build output / container images
+dist/
+archive/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+
+# Env / secrets
+.env
+.env.*
