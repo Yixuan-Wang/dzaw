@@ -1,6 +1,7 @@
 # Build output / container images
 dist/
 archive/
+cache/
 
 # OS files
 .DS_Store
