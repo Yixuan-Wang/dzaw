@@ -1,5 +1,9 @@
 # syntax=docker/dockerfile:1
 
+# Shell tools image built from ../dev-tools. Override with --build-arg DEV_TOOLS=...
+ARG DEV_TOOLS=tyxw-dev-tools:20260925
+FROM ${DEV_TOOLS} AS dev-tools
+
 # Shared base: CUDA toolchain, system Python 3.12, and uv.
 FROM nvidia/cuda:13.0.3-cudnn-devel-ubuntu24.04 AS base
 
@@ -23,11 +27,14 @@ RUN uv pip compile requirements.in --python python3.12 --torch-backend=cu130 -o 
 FROM scratch AS lockfile
 COPY --from=lock /lock/requirements.txt /
 
-# Image stage: install exactly what the committed lockfile says.
+# Image stage
 FROM base AS dev-box
 COPY requirements.txt /tmp/requirements.txt
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv pip install --system --break-system-packages --python python3.12 \
         --torch-backend=cu130 -r /tmp/requirements.txt
+
+COPY --from=dev-tools /opt/dev-tools /opt/dev-tools
+ENV PATH=/opt/dev-tools/bin:$PATH LANG=C.UTF-8
 
 CMD ["python3.12"]
