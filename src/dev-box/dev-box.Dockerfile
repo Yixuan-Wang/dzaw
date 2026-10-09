@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # Shell tools image built from ../dev-tools. Override with --build-arg DEV_TOOLS=...
-ARG DEV_TOOLS=tyxw-dev-tools:20260925
+ARG DEV_TOOLS=tyxw-dev-tools:20261007
 FROM ${DEV_TOOLS} AS dev-tools
 
 # Shared base: CUDA toolchain, system Python 3.12, and uv.
@@ -10,6 +10,7 @@ FROM nvidia/cuda:13.0.3-cudnn-devel-ubuntu24.04 AS base
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
     && apt-get install -y curl ffmpeg python3.12 python3.12-dev python3 python-is-python3 \
+        cmake gdb ninja-build strace \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 

@@ -48,4 +48,4 @@ Avoid pure Python tools, as they will pull in a separate installation of Python.
 
 conda-forge's fish looks for extra completions under the path it was built at, not the environment, so the Dockerfile links `etc/fish/completions` (which fish does search) to `/opt/dev-tools/completions/fish`, where pixi collects the tools' fish completions.
 
-Pixi only collects completion files that packages install. For a tool that can print its own completions but whose package doesn't ship them (currently bat), the Dockerfile writes them into `/opt/dev-tools/completions/fish`. 
+Pixi only collects completion files that packages install. For a tool that can print its own completions but whose package doesn't ship them (currently bat, fd, rg and starship), the Dockerfile writes them into `/opt/dev-tools/completions/fish`. 

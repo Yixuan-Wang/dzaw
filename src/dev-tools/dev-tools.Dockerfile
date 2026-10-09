@@ -13,13 +13,23 @@ RUN --mount=type=cache,target=/root/.cache/rattler \
         bat \
         difftastic \
         direnv \
+        fd-find \
         fish \
         fzf \
         gh \
+        git \
+        htop \
+        jq \
+        less \
+        nvtop \
+        ripgrep \
         starship \
         tmux \
         tokei \
-        zoxide
+        unzip \
+        vim \
+        zoxide \
+        zstd
 
 # Pixi exposes tools through trampolines that put the environment's whole bin
 # directory on PATH. Replace them with plain links to the executables pixi
@@ -35,7 +45,10 @@ RUN --mount=type=cache,target=/root/.cache/rattler \
 
 # Pixi only collects completion files that packages install. Generate fish
 # completions for the tools that print their own but don't ship them.
-RUN bin/bat --completion fish > completions/fish/bat.fish
+RUN bin/bat --completion fish > completions/fish/bat.fish \
+    && bin/fd --gen-completions fish > completions/fish/fd.fish \
+    && bin/rg --generate complete-fish > completions/fish/rg.fish \
+    && bin/starship completions fish > completions/fish/starship.fish
 
 # conda-forge's fish looks for vendor completions under its build-time prefix,
 # not the environment, but it does search $prefix/etc/fish/completions. Point
