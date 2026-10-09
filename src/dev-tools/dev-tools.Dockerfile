@@ -11,13 +11,11 @@ WORKDIR /opt/dev-tools
 RUN --mount=type=cache,target=/root/.cache/rattler \
     pixi global install --environment dev-tools \
         bat \
-        difftastic \
         direnv \
         fd-find \
         fish \
         fzf \
         gh \
-        git \
         htop \
         jq \
         less \
@@ -25,9 +23,7 @@ RUN --mount=type=cache,target=/root/.cache/rattler \
         ripgrep \
         starship \
         tmux \
-        tokei \
         unzip \
-        vim \
         zoxide \
         zstd
 
