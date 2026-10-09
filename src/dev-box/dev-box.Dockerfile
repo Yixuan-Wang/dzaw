@@ -32,7 +32,7 @@ COPY --from=lock /lock/requirements.txt /
 FROM base AS dev-box
 COPY requirements.txt /tmp/requirements.txt
 RUN --mount=type=cache,target=/root/.cache/uv \
-    uv pip install --system --break-system-packages --python python3.12 \
+    uv pip install --system --break-system-packages --compile-bytecode --python python3.12 \
         --torch-backend=cu130 -r /tmp/requirements.txt
 
 COPY --from=dev-tools /opt/dev-tools /opt/dev-tools
