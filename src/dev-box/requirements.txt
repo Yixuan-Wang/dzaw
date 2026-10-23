@@ -66,7 +66,7 @@ cuda-bindings==13.4.3
     # via torch
 cuda-pathfinder==1.8.2
     # via cuda-bindings
-cuda-toolkit==13.0.3.0
+cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3.0
     # via torch
 cycler==0.12.1
     # via matplotlib
@@ -108,7 +108,7 @@ frozenlist==1.8.0
     # via
     #   aiohttp
     #   aiosignal
-fsspec==2026.6.0
+fsspec[http]==2026.6.0
     # via
     #   datasets
     #   huggingface-hub
@@ -358,7 +358,7 @@ patsy==1.0.3
     # via statsmodels
 pexpect==4.9.0
     # via ipython
-pillow==12.3.0
+pillow==13.0.0
     # via
     #   -r requirements.in
     #   matplotlib
@@ -456,7 +456,7 @@ pyyaml==6.0.3
     #   wandb
 pyzmq==27.2.0
     # via marimo
-ray==2.58.0
+ray[data,default]==2.58.0
     # via -r requirements.in
 referencing==0.37.0
     # via
@@ -494,8 +494,6 @@ scipy==1.18.1
     #   statsmodels
 seaborn==0.13.2
     # via -r requirements.in
-setuptools==84.0.0
-    # via torch
 shellingham==1.5.4
     # via typer
 six==1.17.0
@@ -524,16 +522,16 @@ tokenizers==0.22.2
     #   transformers
 tomlkit==0.15.1
     # via marimo
-torch==2.13.0+cu130
+torch==2.13.0
     # via
     #   -r requirements.in
     #   accelerate
     #   torchvision
-torchaudio==2.11.0+cu130
+torchaudio==2.11.0
     # via -r requirements.in
-torchcodec==0.15.0+cu130
+torchcodec==0.15.0
     # via -r requirements.in
-torchvision==0.28.0+cu130
+torchvision==0.28.0
     # via -r requirements.in
 tqdm==4.70.1
     # via
@@ -561,14 +559,11 @@ typer==0.27.2
 typing-extensions==4.16.0
     # via
     #   -r requirements.in
-    #   aiohttp
-    #   aiosignal
     #   altair
     #   anthropic
     #   anyio
     #   formulaic
     #   grpcio
-    #   httpx2
     #   huggingface-hub
     #   openai
     #   opentelemetry-api
@@ -577,8 +572,6 @@ typing-extensions==4.16.0
     #   opentelemetry-semantic-conventions
     #   pydantic
     #   pydantic-core
-    #   referencing
-    #   starlette
     #   torch
     #   typing-inspection
     #   wandb
